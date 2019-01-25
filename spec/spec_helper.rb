@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "assets_mapper"
+require "assets_mapper_ext"
+require "classes/Enum"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

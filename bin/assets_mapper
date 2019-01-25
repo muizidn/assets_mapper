@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'assets_mapper'
+require 'optparse'
+
+path_to_write = ARGV[0]
+
+am = AssetsMapper::AssetsMapper.new
+am.create_assets_map path_to_write
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: example.rb [options]"
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+end.parse!
+
+p options
+p ARGV
