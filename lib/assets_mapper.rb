@@ -3,10 +3,14 @@ require "classes/Xcassets"
 
 module AssetsMapper
   class AssetsMapper
-    def create_assets_map(path_to_read, path_to_write, ignore_folder)
-      if ignore_folder
-        xcasset = IgnoreFolderXcassets.new(path_to_read)
-        puts xcasset.to_s        
+    def initialize(ignore_folder, allow_modification)
+      @ignore_folder = ignore_folder
+      @allow_modification = allow_modification
+    end
+    def create_assets_map(path_to_read, path_to_write)
+      if @ignore_folder
+        xcasset = IgnoreFolderXcassets.new(path_to_read, @allow_modification)
+        Xcassets.write(xcasset.enum.to_s, path_to_write)
       else
         puts "No"
       end

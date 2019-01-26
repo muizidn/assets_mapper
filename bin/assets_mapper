@@ -9,9 +9,13 @@ OptionParser.new do |opts|
   opts.on('--ignore-folder', 'ignore foldering from xcasset folder' ) do |ignore|
     options[:ignore_folder] = ignore
   end
+  opts.on("--allow-modification", 'Allow mapper to modify name to Swift valid variable name') do |allow|
+    options[:allow_modification] = allow
+  end
 end.parse!
 
 ignore = options[:ignore_folder] || false
+allow_modification = options[:allow_modification] || false
 
 xcassets = if ARGV[0]&.include?'.xcassets' then 
     [ARGV[0]]
@@ -28,12 +32,14 @@ swifts =  if ARGV[0]&.include?'.swift' then
       end
   end 
 
+names = []
 no_match = 0
 xcassets.sort.each do |x|
   xcasset, name = x.match('.*/((.*)\.xcassets)').captures
   print "Found " + xcasset.green
   if swifts.any? {|s| s.include?name} then
     print " Match " + "#{name}.swift".yellow
+    names.push name
   else
     print " No matching swift file".red
     no_match = no_match + 1
@@ -41,6 +47,13 @@ xcassets.sort.each do |x|
   puts
 end
 
-if no_match != 0
-puts "\n\nFound #{no_match} xcassets without swift file pair!!!".red
+if no_match == 0
+  names.each do |name|
+    xcasset_file = xcassets.find {|f|f.include?name}
+    swift_file = swifts.find {|f|f.include?name}
+    am = AssetsMapper::AssetsMapper.new(ignore, allow_modification)
+    am.create_assets_map xcasset_file, swift_file
+  end
+else
+  puts "\n\nFound #{no_match} xcassets without swift file pair!!!".red
 end

@@ -10,7 +10,7 @@ RSpec.describe AssetsMapper do
       "yx &" 
     ]
     strings.each do |s|
-      expect { AssetsMapper.check_string(s) }.to raise_error(/Asset name/)
+      expect { AssetsMapper::AssetsMapper.check_string(s, false) }.to raise_error SystemExit
     end
   end
 end

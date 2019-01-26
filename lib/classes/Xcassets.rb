@@ -3,33 +3,43 @@ require 'assets_mapper_ext'
 
 module AssetsMapper
   class Xcassets
-    def initialize(filepath, respect_folder)
+    def initialize(filepath, ignore_folder, allow_modification)
       @filepath = filepath
-      @respect_folder = respect_folder
-      @enum = nil
+      @ignore_folder = ignore_folder
+      @allow_modification
       @xcassets_name = ""
+    end
+
+    def self.write(string, file)
+      File.open(file, 'w') { |file| file.write(string) }
     end
   end
 
   class IgnoreFolderXcassets < Xcassets
-    def initialize(filepath)
-      super(filepath, false)
+    def initialize(filepath, allow_modification)
+      super(filepath, false, allow_modification)
       imagesets = Dir.glob("#{@filepath}/**/*.imageset")
         .map{|s| s.split('/')}
         .flat_map{|x| x}
         .select {|x|x.include?'.imageset'}
         .sort
 
-      @xcassets_name = @filepath.match('/*(.*).xcassets').captures[0]
+      @xcassets_name = @filepath.match('.*/(.*)\.xcassets').captures[0]
       @enum = Enum.new(@xcassets_name)
       imagesets.each do |i|
+        asset_name = i.match('(.*).imageset').captures[0]
         image_name = AssetsMapper.check_string(
-          i.match('(.*).imageset').captures[0]
+          asset_name,
+          allow_modification
         )
-        string = Enum.static_let(image_name, image_name)
+
+        string = Enum.static_let(image_name, asset_name)
         @enum.add_children(string)
       end
-      puts @enum.to_s
+    end
+
+    def enum
+      @enum
     end
   end
 end
