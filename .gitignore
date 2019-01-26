@@ -12,3 +12,4 @@
 
 *.xcassets
 .DS_Store
+*.swift

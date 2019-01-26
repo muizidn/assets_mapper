@@ -1,4 +1,5 @@
-require 'Enum'
+require 'classes/Enum'
+require 'assets_mapper_ext'
 
 module AssetsMapper
   class Xcassets
