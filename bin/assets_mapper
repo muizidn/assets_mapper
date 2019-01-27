@@ -23,7 +23,7 @@ xcassets = if ARGV[0]&.include?'.xcassets' then
     Dir.glob('./**/*.xcassets') 
   end
 swifts =  if ARGV[1]&.include?'.swift' then
-    [ARGV[0]] 
+    [ARGV[1]] 
   else 
     Dir.glob('./**/*.swift')
       .select do |f|
@@ -35,10 +35,12 @@ swifts =  if ARGV[1]&.include?'.swift' then
 names = []
 no_match = 0
 xcassets.sort.each do |x|
-  xcasset, name = x.match('.*/((.*)\.xcassets)').captures
-  print "Found " + xcasset.green
-  if swifts.any? {|s| s.include?name} then
-    print " Match " + "#{name}.swift".yellow
+  puts x
+  xcasset, name = x.match('[\.\/.]*((.*).xcassets)').captures
+  print "Found " + x.green
+  swift_file = ""
+  if swifts.any? {|s| swift_file = s; s.include?name} then
+    print " Match " + "#{swift_file}".yellow
     names.push name
   else
     print " No matching swift file".red

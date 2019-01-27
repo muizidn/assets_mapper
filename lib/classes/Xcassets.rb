@@ -1,3 +1,4 @@
+require 'colorize'
 require 'classes/Enum'
 require 'assets_mapper_ext'
 
@@ -11,6 +12,7 @@ module AssetsMapper
     end
 
     def self.write(string, file)
+      puts "Writing in " + file.yellow
       File.open(file, 'w') { |file| file.write(string) }
     end
   end
@@ -24,7 +26,7 @@ module AssetsMapper
         .select {|x|x.include?'.imageset'}
         .sort
 
-      @xcassets_name = @filepath.match('.*/(.*)\.xcassets').captures[0]
+      @xcassets_name = @filepath.match('[\.\/.]*(.*).xcassets').captures
       @enum = Enum.new(@xcassets_name)
       imagesets.each do |i|
         asset_name = i.match('(.*).imageset').captures[0]

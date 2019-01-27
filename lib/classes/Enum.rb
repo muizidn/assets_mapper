@@ -35,4 +35,11 @@ module AssetsMapper
       s = s + @indent_prefix + "}\n"
     end
   end
+
+
+  class RecurseEnum < Enum
+    def initialize(path)
+      @name = path.match('.*/(.*)/').captures[]
+    end
+  end
 end
