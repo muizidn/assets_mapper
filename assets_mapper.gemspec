@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "assets_mapper/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "assets_mapper"
+  spec.name          = "assets-mapper"
   spec.version       = AssetsMapper::VERSION
   spec.authors       = ["Muhammad Muizzsuddin"]
   spec.email         = ["muiz.idn@gmail.com"]

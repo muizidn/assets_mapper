@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "assets_mapper"
+require "assets-mapper"
 require "assets_mapper_ext"
 require "classes/Enum"
 

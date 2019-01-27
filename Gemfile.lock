@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    assets_mapper (0.1.0)
+    assets-mapper (0.1.0)
       colorize
 
 GEM
@@ -28,7 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  assets_mapper!
+  assets-mapper!
   bundler (~> 1.17)
   colorize
   rake
