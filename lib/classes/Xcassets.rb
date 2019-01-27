@@ -26,7 +26,7 @@ module AssetsMapper
         .select {|x|x.include?'.imageset'}
         .sort
 
-      @xcassets_name = @filepath.match('[\.\/.]*(.*).xcassets').captures
+      @xcassets_name = @filepath.match('[\.\/.]*(.*).xcassets').captures[0]
       @enum = Enum.new(@xcassets_name)
       imagesets.each do |i|
         asset_name = i.match('(.*).imageset').captures[0]

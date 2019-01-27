@@ -12,7 +12,10 @@ module AssetsMapper
         xcasset = IgnoreFolderXcassets.new(path_to_read, @allow_modification)
         Xcassets.write(xcasset.enum.to_s, path_to_write)
       else
-        puts "No"
+        puts "Currently doesn't support --ignore-folder=false".red
+        puts "https://github.com/muizidn/assets_mapper/issues/2".blue
+        puts "Please pass --ignore-folder option!"
+        abort
       end
     end
     private
