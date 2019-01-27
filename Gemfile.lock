@@ -30,7 +30,7 @@ PLATFORMS
 DEPENDENCIES
   assets-mapper!
   bundler (~> 1.17)
-  colorize
+  colorize (~> 0.8.1)
   rake
   rspec (~> 3.0)
 
