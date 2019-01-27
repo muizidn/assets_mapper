@@ -1,4 +1,4 @@
-require "assets_mapper/version"
+require "assets-mapper/version"
 require "classes/Xcassets"
 
 module AssetsMapper

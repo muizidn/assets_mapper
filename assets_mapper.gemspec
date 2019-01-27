@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "assets_mapper/version"
+require "assets-mapper/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "assets-mapper"

@@ -18,14 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install assets_mapper
+    $ gem install assets-mapper
 
 ## Usage
 
 Start by creating corresponding `.swift` file for each `.xcassets`. You can put it any where!
 
 Example directory
-```
+```s
 .
 ├── Assets.xcassets
 ├── Logos.xcassets
@@ -39,13 +39,15 @@ Example directory
 
 ### Mapping Command
 
-```
-assets-mapper --ignore-folder --allow-modification
+```s
+assets-mapper [--ignore-folder] [--allow-modification]
 ```
 
 #### Options
 1. `--ignore-folder` Ignore .xcassets foldering.
 2. `--allow-modification` Allow `assets-mapper` to modify name to a valid Swift variable. *Only perform in Swift variable name.*
+
+**TAKE A LOOK?**
 
 ![Example.xcassets](img/Example.xcassets.png)
 
