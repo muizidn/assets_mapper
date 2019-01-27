@@ -22,7 +22,7 @@ xcassets = if ARGV[0]&.include?'.xcassets' then
   else 
     Dir.glob('./**/*.xcassets') 
   end
-swifts =  if ARGV[0]&.include?'.swift' then
+swifts =  if ARGV[1]&.include?'.swift' then
     [ARGV[0]] 
   else 
     Dir.glob('./**/*.swift')
