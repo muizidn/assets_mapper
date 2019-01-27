@@ -1,6 +1,7 @@
 # AssetsMapper
 
 [![Gem Version](https://badge.fury.io/rb/assets-mapper.svg)](https://badge.fury.io/rb/assets-mapper)
+![BuildVersion](https://api.travis-ci.com/muizidn/assets_mapper.svg?branch=master)
 
 Add confidence for iOS assets reference using mapped assets.
 
