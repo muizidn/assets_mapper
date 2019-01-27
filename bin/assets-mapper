@@ -43,7 +43,7 @@ xcassets.sort.each do |x|
     print " Match " + "#{swift_file}".yellow
     names.push name
   else
-    print " No matching swift file".red
+    print " No corresponding swift file".red
     no_match = no_match + 1
   end
   puts
