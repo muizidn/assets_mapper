@@ -3,6 +3,8 @@
 [![Gem Version](https://badge.fury.io/rb/assets-mapper.svg)](https://badge.fury.io/rb/assets-mapper)
 ![BuildVersion](https://api.travis-ci.com/muizidn/assets_mapper.svg?branch=master)
 
+This commandline tool will follow implementation from https://github.com/mac-cain13/R.swift
+
 Add confidence for iOS assets reference using mapped assets.
 
 ## Installation
